@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FinalProject_FitnessApp</string>
+    <string name="addBtn">Add Exercises</string>
+    <string name="search">Search</string>
+    <string name="target_muscle_group">Target muscle group:\t</string>
+    <string name="part_of">Part of:\t</string>
+    <string name="equipmentRequired">Equipment Required:</string>
+    <string name="secMuscles">Secondary muscles:</string>
+    <string name="how">How to do:</string>
+    <string name="equipment">Equipment:\t</string>
+</resources>
