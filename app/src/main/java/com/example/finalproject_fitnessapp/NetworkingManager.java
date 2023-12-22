@@ -1,5 +1,8 @@
 package com.example.finalproject_fitnessapp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -11,6 +14,7 @@ public class NetworkingManager {
 
     interface GotResultFromAPI {
         void gotListResultFromAPI(String jsonResponse);
+        //void gotGIF(Bitmap demoGIF);
     }
     GotResultFromAPI listener;
 
@@ -59,4 +63,26 @@ public class NetworkingManager {
             }
         });
     }
+//    void getDemoGIF(String url){
+//        MyApp.executorService.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                Bitmap demoGif;
+//                try {
+//                    URL urlObject = new URL(url);
+//                    demoGif = BitmapFactory.decodeStream(urlObject.openStream());
+//                    MyApp.mainHandler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            listener.gotGIF(demoGif.extractAlpha());
+//                        }
+//                    });
+//                } catch (MalformedURLException e) {
+//                    throw new RuntimeException(e);
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        });
+//    }
 }

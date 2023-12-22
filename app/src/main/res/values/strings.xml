@@ -8,4 +8,6 @@
     <string name="secMuscles">Secondary muscles:</string>
     <string name="how">How to do:</string>
     <string name="equipment">Equipment:\t</string>
+    <string name="description">How to do GIF</string>
+    <string name="favorite">Add/ Remove from favorites</string>
 </resources>

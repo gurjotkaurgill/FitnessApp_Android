@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -62,7 +63,7 @@ public class ExercisesForMuscleGroupActivity extends AppCompatActivity
     public void exerciseClicked(Exercise exercise) {
         Intent intent3 = new Intent(ExercisesForMuscleGroupActivity.this, ExerciseDetailsActivity.class);
         //intent3.putExtra("exerciseName",exercise.getName());
-        intent3.putExtra("exercise",exercise);
+        ((MyApp)getApplication()).currentExercise = exercise;
         startActivity(intent3);
     }
 

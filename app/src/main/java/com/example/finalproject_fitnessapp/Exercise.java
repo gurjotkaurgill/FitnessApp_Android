@@ -3,7 +3,7 @@ package com.example.finalproject_fitnessapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Exercise implements Parcelable {
+public class Exercise {
     String name;
     String bodyPart;
     String equipment;
@@ -60,41 +60,5 @@ public class Exercise implements Parcelable {
     public void setInstructions(String instructions) {
         this.instructions = instructions;
     }
-
-    protected Exercise(Parcel in) {
-        name = in.readString();
-        bodyPart = in.readString();
-        equipment = in.readString();
-        gifUrl = in.readString();
-        secondaryMuscles = in.readString();
-        instructions = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(bodyPart);
-        dest.writeString(equipment);
-        dest.writeString(gifUrl);
-        dest.writeString(secondaryMuscles);
-        dest.writeString(instructions);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<Exercise> CREATOR = new Creator<Exercise>() {
-        @Override
-        public Exercise createFromParcel(Parcel in) {
-            return new Exercise(in);
-        }
-
-        @Override
-        public Exercise[] newArray(int size) {
-            return new Exercise[size];
-        }
-    };
 
 }

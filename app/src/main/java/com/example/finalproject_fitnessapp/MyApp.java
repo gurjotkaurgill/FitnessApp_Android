@@ -16,4 +16,5 @@ public class MyApp extends Application {
     JSONManager jsonManager = new JSONManager();
     ArrayList<MuscleGroup> muscleGroupArrayList = new ArrayList<>(0);
     String currentMuscleGroup;
+    Exercise currentExercise;
 }
