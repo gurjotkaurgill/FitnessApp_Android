@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".MyApp"
@@ -17,34 +17,48 @@
         android:theme="@style/Theme.FinalProject_FitnessApp"
         tools:targetApi="31">
         <activity
-            android:name=".ExerciseDetailsActivity"
+            android:name=".Activities.SearchByNameActivity"
+            android:label="Search By Name"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ExercisesForMuscleGroupActivity" />
+                android:value=".Activities.SearchByActivity" />
         </activity>
         <activity
-            android:name=".ExercisesForMuscleGroupActivity"
+            android:name=".Activities.ExerciseDetailsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MuscleGroupActivity" />
+                android:value=".Activities.ExercisesForTargetGroupActivity" />
         </activity>
         <activity
-            android:name=".MuscleGroupActivity"
-            android:label="Muscle Groups"
+            android:name=".Activities.ExercisesForTargetGroupActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".Activities.TargetGroupActivity" />
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="Favorite Exercises"
-            android:exported="true">
+            android:name=".Activities.TargetGroupActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.SearchByActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.SearchByActivity"
+            android:exported="false"
+            android:label="Search By">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.MainActivity"
+            android:exported="true"
+            android:label="Favorite Exercises">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

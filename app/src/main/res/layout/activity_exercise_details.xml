@@ -6,34 +6,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ExerciseDetailsActivity"
+    tools:context=".Activities.ExerciseDetailsActivity"
     >
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="false"
-    android:scrollbarSize="10dp">
+    android:scrollbarSize="@dimen/dp10">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
 
-        <!--
-        <TextView
-            android:id="@+id/nameField"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/webView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    -->
         <ImageView
             android:id="@+id/demoGIF"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/fillDimen"
             android:contentDescription="@string/description"
             android:adjustViewBounds="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,115 +35,98 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.50" />
+            app:layout_constraintGuide_percent="0.40" />
 
-        <TableLayout
-            android:id="@+id/table"
+        <LinearLayout
+            android:id="@+id/details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             >
-            <TableRow
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="@string/target_muscle_group"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:id="@+id/targetField"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    />
-            </TableRow>
-            <TableRow
+                android:textSize="@dimen/heading"
+                android:text="@string/target_muscle_group"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/targetField"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="@string/part_of"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:id="@+id/partOfField"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    />
-            </TableRow>
-            <TableRow
+                android:textSize="@dimen/value"
+                android:layout_marginBottom="@dimen/linearLayoutChildrenMargin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="@string/equipmentRequired"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/equipmentField"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    />
-            </TableRow>
-            <TableRow
+                android:textSize="@dimen/heading"
+                android:text="@string/part_of"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/partOfField"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:text="@string/secMuscles"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/secMusclesField"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    />
-            </TableRow>
-        </TableLayout>
+                android:textSize="@dimen/value"
+                android:layout_marginBottom="@dimen/linearLayoutChildrenMargin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/heading"
+                android:text="@string/equipmentRequired"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/equipmentField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/value"
+                android:layout_marginBottom="@dimen/linearLayoutChildrenMargin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/heading"
+                android:text="@string/secMuscles"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/secMusclesField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/value"
+                android:layout_marginBottom="@dimen/linearLayoutChildrenMargin"
+                />
+            <TextView
+                android:id="@+id/instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/heading"
+                android:text="@string/how"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/instructionsField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/value"
+                />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/instructions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="@string/how"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/table"/>
-
-        <TextView
-            android:id="@+id/instructionsField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/instructions"
-            android:textSize="24sp"
-            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/floatingActionButton"
+        android:layout_width="@dimen/favButtonDimens"
+        android:layout_height="@dimen/favButtonDimens"
         android:clickable="true"
-        app:srcCompat="@drawable/heart_plus"
+        app:srcCompat="@drawable/fav_no"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp10"
         android:focusable="true"
         android:contentDescription="@string/favorite" />
 </RelativeLayout>

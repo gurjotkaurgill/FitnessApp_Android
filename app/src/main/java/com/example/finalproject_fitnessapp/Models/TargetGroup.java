@@ -1,10 +1,11 @@
-package com.example.finalproject_fitnessapp;
+package com.example.finalproject_fitnessapp.Models;
 
-public class MuscleGroup {
+public class TargetGroup {
 
     String name;
 
-    public MuscleGroup(String jsonString) {
+    public TargetGroup(String jsonString) {
+        //create TargetGroup object from the JSON string
         String[] allMuscleGroups = jsonString.split(",");
         this.name = allMuscleGroups[0];
     }

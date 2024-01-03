@@ -1,11 +1,17 @@
-package com.example.finalproject_fitnessapp;
+package com.example.finalproject_fitnessapp.Models;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity
 public class Exercise {
+    @PrimaryKey(autoGenerate = true)
+    public int id;
     String name;
+    String targetMuscle;
     String bodyPart;
+    @ColumnInfo(name="equipment_required")
     String equipment;
     String gifUrl;
     String secondaryMuscles;
@@ -15,6 +21,10 @@ public class Exercise {
 
     public String getName() {
         return name;
+    }
+
+    public String getTargetMuscle() {
+        return targetMuscle;
     }
 
     public String getBodyPart() {
@@ -39,6 +49,10 @@ public class Exercise {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setTargetMuscle(String targetMuscle) {
+        this.targetMuscle = targetMuscle;
     }
 
     public void setBodyPart(String bodyPart) {

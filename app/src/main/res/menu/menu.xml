@@ -9,4 +9,9 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         />
 
+    <item android:id="@+id/menuHome"
+        android:title="@string/go_to_home"
+        android:icon="@drawable/home"
+        app:showAsAction="ifRoom"/>
+
 </menu>

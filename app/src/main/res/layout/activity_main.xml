@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favList"
@@ -20,12 +20,13 @@
         android:id="@+id/addExerciseBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="@dimen/plusBtnMargin"
+        android:layout_marginBottom="@dimen/plusBtnMargin"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/plus"
-        android:contentDescription="@string/addBtn" />
+        android:contentDescription="@string/addBtn"
+        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

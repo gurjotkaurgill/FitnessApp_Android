@@ -2,12 +2,23 @@
     <string name="app_name">FinalProject_FitnessApp</string>
     <string name="addBtn">Add Exercises</string>
     <string name="search">Search</string>
-    <string name="target_muscle_group">Target muscle group:\t</string>
-    <string name="part_of">Part of:\t</string>
+    <string name="target_muscle_group">Target muscle group:</string>
+    <string name="part_of">Part of:</string>
     <string name="equipmentRequired">Equipment Required:</string>
     <string name="secMuscles">Secondary muscles:</string>
     <string name="how">How to do:</string>
-    <string name="equipment">Equipment:\t</string>
+    <string name="equipment">Equipment:</string>
     <string name="description">How to do GIF</string>
     <string name="favorite">Add/ Remove from favorites</string>
+    <string name="by_target_muscle">By Target Muscle</string>
+    <string name="by_target_body_part">By Target Body Part</string>
+    <string name="by_equipment">By equipment</string>
+    <string name="by_exercise_name">By exercise name</string>
+    <string name="explore">Explore</string>
+    <string name="lowerRowText">%1$s - %2$s</string>
+    <string name="secInfo">%1$s - %2$s - %3$s</string>
+    <string name="go_to_home">Go to home</string>
+    <string name="muscleGroups">Muscle Groups</string>
+    <string name="bodyParts">Body Parts</string>
+    <string name="equipments">Equipment</string>
 </resources>
