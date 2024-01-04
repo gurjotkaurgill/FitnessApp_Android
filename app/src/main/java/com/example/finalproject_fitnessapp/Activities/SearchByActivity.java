@@ -22,6 +22,7 @@ public class SearchByActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_by);
+        this.setTitle(getString(R.string.searchBy));
 
         radioGroup = findViewById(R.id.radioGroup);
         exploreButton = findViewById(R.id.exploreBtn);

@@ -27,6 +27,8 @@ public class ExercisesForTargetGroupActivity extends AppCompatActivity
     String targetGroupName;
     RecyclerView recyclerView;
     ExercisesRecyclerAdapter adapter;
+    private SearchView mySearchView;
+    private String searchText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,20 +44,29 @@ public class ExercisesForTargetGroupActivity extends AppCompatActivity
         jsonManager = ((MyApp)getApplication()).jsonManager;
         networkingManager = ((MyApp)getApplication()).networkingManager;
 
-        int checked = ((MyApp)getApplication()).optionChecked;
-        if(checked == 1) {
-            networkingManager.getExercisesForMuscleGroup(targetGroupName.toLowerCase());
+        int checked = ((MyApp) getApplication()).optionChecked;
+        exerciseArrayList = new ArrayList<>(0);
+
+        if(savedInstanceState != null) {
+            //save a call to API and make the loading of list faster
+            exerciseArrayList = savedInstanceState.getParcelableArrayList("list");
+            //to save the state of searchView
+            searchText = savedInstanceState.getString("searchText");
         }
-        if(checked == 2) {
-            networkingManager.getExercisesForBodyPart(targetGroupName.toLowerCase());
-        }
-        if(checked == 3) {
-            networkingManager.getExercisesWithEquipment(targetGroupName.toLowerCase());
+        else {
+            if (checked == 1) {
+                networkingManager.getExercisesForMuscleGroup(targetGroupName.toLowerCase());
+            }
+            if (checked == 2) {
+                networkingManager.getExercisesForBodyPart(targetGroupName.toLowerCase());
+            }
+            if (checked == 3) {
+                networkingManager.getExercisesWithEquipment(targetGroupName.toLowerCase());
+            }
         }
 
         networkingManager.listener = this;
 
-        exerciseArrayList = new ArrayList<>(0);
         recyclerView = findViewById(R.id.exerciseList);
         adapter = new ExercisesRecyclerAdapter(this,exerciseArrayList,checked);
         recyclerView.setAdapter(adapter);
@@ -83,8 +94,17 @@ public class ExercisesForTargetGroupActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu,menu);
-        SearchView menuSearchItem = (SearchView) menu.findItem(R.id.menuSearch).getActionView();
-        menuSearchItem.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        mySearchView = (SearchView) menu.findItem(R.id.menuSearch).getActionView();
+        MenuItem searchMenuItem = menu.findItem(R.id.menuSearch);
+
+        //focus the SearchView
+        if (searchText != null && !searchText.isEmpty()) {
+            searchMenuItem.expandActionView();
+            mySearchView.setQuery(searchText, true);
+            mySearchView.clearFocus();
+            filterList(searchText);
+        }
+        mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -130,5 +150,13 @@ public class ExercisesForTargetGroupActivity extends AppCompatActivity
         Intent intent3 = new Intent(ExercisesForTargetGroupActivity.this, ExerciseDetailsActivity.class);
         ((MyApp)getApplication()).currentExercise = exercise;
         startActivity(intent3);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("list",exerciseArrayList);
+        searchText = mySearchView.getQuery().toString();
+        outState.putString("searchText", searchText);
     }
 }

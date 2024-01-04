@@ -21,4 +21,7 @@
     <string name="muscleGroups">Muscle Groups</string>
     <string name="bodyParts">Body Parts</string>
     <string name="equipments">Equipment</string>
+    <string name="searchByName">Search By Name</string>
+    <string name="favExercises">Favourite Exercises</string>
+    <string name="searchBy">Search By</string>
 </resources>

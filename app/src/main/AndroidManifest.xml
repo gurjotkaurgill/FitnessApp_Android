@@ -18,7 +18,6 @@
         tools:targetApi="31">
         <activity
             android:name=".Activities.SearchByNameActivity"
-            android:label="Search By Name"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -47,16 +46,14 @@
         </activity>
         <activity
             android:name=".Activities.SearchByActivity"
-            android:exported="false"
-            android:label="Search By">
+            android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
         <activity
             android:name=".Activities.MainActivity"
-            android:exported="true"
-            android:label="Favorite Exercises">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

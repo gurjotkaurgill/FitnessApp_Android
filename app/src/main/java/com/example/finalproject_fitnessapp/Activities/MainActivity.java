@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity
     RecyclerView recyclerView;
     ArrayList<Exercise> favExercises;
     ExercisesRecyclerAdapter adapter;
+    //Following variables declared here to use in savedInstanceState
+    private SearchView mySearchView;
+    private String searchText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,10 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter.exerciseClickListener = this;
+
+        if (savedInstanceState != null) {
+            searchText = savedInstanceState.getString("searchText");
+        }
 
         plusBtn.setOnClickListener(v -> {
             Intent intent1 = new Intent(MainActivity.this, SearchByActivity.class);
@@ -76,7 +83,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onResume() {
         super.onResume();
-        databaseManager.getAllFavoriteExercisesInBGThread();
+        if(adapter.exercises.size() == 0)
+            databaseManager.getAllFavoriteExercisesInBGThread();
     }
 
     //to refresh the list with the new changes in database made from exercise details activity
@@ -115,9 +123,19 @@ public class MainActivity extends AppCompatActivity
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu,menu);
         menu.getItem(1).setVisible(false);
+        this.setTitle(getString(R.string.favExercises));
 
-        SearchView menuSearchItem = (SearchView) menu.findItem(R.id.menuSearch).getActionView();
-        menuSearchItem.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        mySearchView = (SearchView) menu.findItem(R.id.menuSearch).getActionView();
+        MenuItem searchMenuItem = menu.findItem(R.id.menuSearch);
+
+        //focus the SearchView
+        if (searchText != null && !searchText.isEmpty()) {
+            searchMenuItem.expandActionView();
+            mySearchView.setQuery(searchText, true);
+            mySearchView.clearFocus();
+            searchList(searchText);
+        }
+        mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -137,7 +155,6 @@ public class MainActivity extends AppCompatActivity
         });
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return super.onOptionsItemSelected(item);
@@ -158,4 +175,10 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent4);
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        searchText = mySearchView.getQuery().toString();
+        outState.putString("searchText", searchText);
+    }
 }

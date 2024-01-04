@@ -1,11 +1,15 @@
 package com.example.finalproject_fitnessapp.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Exercise {
+public class Exercise implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     public int id;
     String name;
@@ -16,8 +20,6 @@ public class Exercise {
     String gifUrl;
     String secondaryMuscles;
     String instructions;
-
-    public Exercise(){}
 
     public String getName() {
         return name;
@@ -75,4 +77,44 @@ public class Exercise {
         this.instructions = instructions;
     }
 
+    public Exercise(){}
+
+    protected Exercise(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        targetMuscle = in.readString();
+        bodyPart = in.readString();
+        equipment = in.readString();
+        gifUrl = in.readString();
+        secondaryMuscles = in.readString();
+        instructions = in.readString();
+    }
+
+    public static final Creator<Exercise> CREATOR = new Creator<Exercise>() {
+        @Override
+        public Exercise createFromParcel(Parcel in) {
+            return new Exercise(in);
+        }
+
+        @Override
+        public Exercise[] newArray(int size) {
+            return new Exercise[size];
+        }
+    };
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(targetMuscle);
+        dest.writeString(bodyPart);
+        dest.writeString(equipment);
+        dest.writeString(gifUrl);
+        dest.writeString(secondaryMuscles);
+        dest.writeString(instructions);
+    }
 }

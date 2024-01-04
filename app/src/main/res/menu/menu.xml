@@ -5,13 +5,13 @@
     <item android:id="@+id/menuSearch"
         android:title="@string/search"
         android:icon="@drawable/ic_search"
-        app:showAsAction="collapseActionView|ifRoom"
+        app:showAsAction="collapseActionView|always"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         />
 
     <item android:id="@+id/menuHome"
         android:title="@string/go_to_home"
         android:icon="@drawable/home"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
 </menu>
