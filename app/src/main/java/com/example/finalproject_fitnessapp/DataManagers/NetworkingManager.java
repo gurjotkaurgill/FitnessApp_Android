@@ -11,8 +11,8 @@ public class NetworkingManager {
         void gotListResultFromAPI(String jsonResponse);
     }
     public GotResultFromAPI listener;
-    //private final String apiKey = "ace899a702msh423906df3dc0feep124266jsna5314aec7bb4";
-    private final String apiKey = "8af8d29439mshc4c16b219413487p1c5590jsn81e500c55059";
+    private final String apiKey = "ace899a702msh423906df3dc0feep124266jsna5314aec7bb4";
+    //private final String apiKey = "8af8d29439mshc4c16b219413487p1c5590jsn81e500c55059";
     private final int limit = 25;
     public void getMuscleGroups(){
         String urlString = "https://exercisedb.p.rapidapi.com/exercises/targetList";
