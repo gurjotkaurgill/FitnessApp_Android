@@ -1,6 +1,7 @@
 package com.example.finalproject_fitnessapp.Activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.example.finalproject_fitnessapp.MyApp;
 import com.example.finalproject_fitnessapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
+import java.util.Objects;
 
 public class ExerciseDetailsActivity extends AppCompatActivity
         implements DatabaseManager.DatabaseListener {
@@ -62,6 +64,41 @@ public class ExerciseDetailsActivity extends AppCompatActivity
                 isFavorite = true;
             }
         });
+    }
+
+    //this activity has multiple parents: MainActivity, ExercisesForTargetGroupActivity
+    //and SearchByNameActivity
+    //so instead of adding meta data in android manifest for this activity,
+    //it is better to dismiss it
+    @Nullable
+    @Override
+    public Intent getSupportParentActivityIntent() {
+        return getParentActivityIntentCustom();
+    }
+
+    @Nullable
+    @Override
+    public Intent getParentActivityIntent() {
+        return getParentActivityIntentCustom();
+    }
+
+    private Intent getParentActivityIntentCustom() {
+        Intent intent;
+        String goToIntent = Objects.requireNonNull(getIntent().getExtras()).getString("goto");
+
+        //determine which activity is the parent
+        if(Objects.requireNonNull(goToIntent).equals("searchByNameActivity")) {
+            intent = new Intent(this, SearchByNameActivity.class);
+        }
+        else if(goToIntent.equals("ExercisesForTargetGroupActivity")) {
+            intent = new Intent(this, ExercisesForTargetGroupActivity.class);
+        }
+        else {
+            intent = new Intent(this, MainActivity.class);
+        }
+        //set flag to reuse the previous activity instead of creating a new activity instance
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        return intent;
     }
 
     private void initializeViewsAndVariables(){

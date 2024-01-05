@@ -44,4 +44,5 @@ public class DatabaseManager {
     public void deleteExerciseInBGThread(Exercise exercise) {
         MyApp.executorService.execute(() -> db.getDAO().removeExercise(exercise));
     }
+
 }

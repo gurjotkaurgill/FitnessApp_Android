@@ -13,12 +13,13 @@ public interface ExerciseDAO {
     @Insert
     void addExercise(Exercise exercise);
 
-    @Query("select * from Exercise")
+    @Delete
+    void removeExercise(Exercise exercise);
+
+    @Query("select * from Exercise order by name asc")
     List<Exercise> getExercises();
 
     @Query("select * from Exercise where name LIKE :word")
     List<Exercise> searchForExercise(String word);
 
-    @Delete
-    void removeExercise(Exercise exercise);
 }

@@ -113,9 +113,10 @@ public class SearchByNameActivity extends AppCompatActivity
 
     @Override
     public void exerciseClicked(Exercise exercise) {
-        Intent intent3 = new Intent(SearchByNameActivity.this, ExerciseDetailsActivity.class);
+        Intent intent = new Intent(SearchByNameActivity.this, ExerciseDetailsActivity.class);
         ((MyApp)getApplication()).currentExercise = exercise;
-        startActivity(intent3);
+        intent.putExtra("goto","searchByNameActivity");
+        startActivity(intent);
     }
 
     @Override

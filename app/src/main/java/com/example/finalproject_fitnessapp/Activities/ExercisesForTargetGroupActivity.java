@@ -147,9 +147,10 @@ public class ExercisesForTargetGroupActivity extends AppCompatActivity
 
     @Override
     public void exerciseClicked(Exercise exercise) {
-        Intent intent3 = new Intent(ExercisesForTargetGroupActivity.this, ExerciseDetailsActivity.class);
+        Intent intent = new Intent(ExercisesForTargetGroupActivity.this, ExerciseDetailsActivity.class);
         ((MyApp)getApplication()).currentExercise = exercise;
-        startActivity(intent3);
+        intent.putExtra("goto","ExercisesForTargetGroupActivity");
+        startActivity(intent);
     }
 
     @Override
@@ -159,4 +160,5 @@ public class ExercisesForTargetGroupActivity extends AppCompatActivity
         searchText = mySearchView.getQuery().toString();
         outState.putString("searchText", searchText);
     }
+
 }

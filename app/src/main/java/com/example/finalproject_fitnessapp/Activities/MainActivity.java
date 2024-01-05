@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
 
         //on left swipe - delete exercise from database (remove from favorites)
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback =
-                new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+                new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
                 int position = viewHolder.getAdapterPosition();
                 databaseManager.deleteExerciseInBGThread(favExercises.get(position));
                 favExercises.remove(position);
-                adapter.notifyDataSetChanged();
+                adapter.notifyItemRemoved(position);
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
@@ -170,9 +170,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void exerciseClicked(Exercise exercise) {
-        Intent intent4 = new Intent(MainActivity.this, ExerciseDetailsActivity.class);
+        Intent intent = new Intent(MainActivity.this, ExerciseDetailsActivity.class);
         ((MyApp)getApplication()).currentExercise = exercise;
-        startActivity(intent4);
+        intent.putExtra("goto","MainActivity");
+        startActivity(intent);
     }
 
     @Override
