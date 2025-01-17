@@ -12,3 +12,5 @@
 
 **Results:** Successfully delivered a fully functional fitness application meeting project requirements and achieving a perfect grade of 100%.
 This project showcases proficiency in Android app development using Java, integration of external APIs, database management, user interface design, and state management techniques for improved user experience.
+
+Short video explaining the functionality: https://www.youtube.com/watch?v=-Ft-y8_awG8
